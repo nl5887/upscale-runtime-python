@@ -1,0 +1,7 @@
+#!/bin/bash
+apt-get update -qq
+
+apt-get install --force-yes -y -qq wget python git nginx uwsgi uwsgi-plugin-python python-virtualenv python-uwsgidecorators python-dev libffi-dev libmysqlclient-dev
+
+for script in `ls build.d/* | sort -V`; do echo Executing $script; chmod +x ./$script; ./$script; done
+
