@@ -1,3 +1,7 @@
 cd /usr/share/nginx/html/
 . env/bin/activate
+
+if [ -e setup.py ];
+then
 python setup.py install
+fi
