@@ -1,6 +1,7 @@
 <uwsgi>
 	<plugin>python</plugin>
 	<socket>/run/uwsgi/app/app/socket</socket>
+	<virtualenv>/usr/share/nginx/html/env/</virtualenv>
 	<pythonpath>/usr/share/nginx/html/env/bin/</pythonpath>
 	<chdir>/usr/share/nginx/html</chdir>
 	<home>/usr/share/nginx/html/env/</home>
