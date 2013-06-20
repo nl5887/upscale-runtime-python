@@ -1,0 +1,3 @@
+#!/bin/bash
+cp -r /repo/* /usr/share/nginx/html/
+

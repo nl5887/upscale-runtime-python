@@ -1,0 +1,19 @@
+template: python
+
+version: 1
+
+env:
+ UPSCALE_ROOT: /usr/share/nginx/html
+
+packages:
+ - wget
+ - python
+ - git
+ - nginx
+ - uwsgi
+ - uwsgi-plugin-python
+ - python-virtualenv
+ - python-uwsgidecorators
+ - python-dev
+ - libffi-dev
+ - libmysqlclient-dev

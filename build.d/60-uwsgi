@@ -1,0 +1,2 @@
+#!/bin/bash
+cp app.xml /etc/uwsgi/apps-enabled/app.xml

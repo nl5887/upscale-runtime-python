@@ -1,0 +1,22 @@
+  server {
+  	listen 80;
+  	listen [::]:80 default_server ipv6only=on;
+  	root /usr/share/nginx/html;
+  	index index.html index.htm;
+  	client_max_body_size 2000M;
+  
+  	location / {
+   		root /usr/share/nginx/html/static; 
+   		try_files $uri @uwsgi;
+  	}
+  
+   	location @uwsgi {
+  		uwsgi_pass      	unix:///run/uwsgi/app/app/socket;
+  		include         	uwsgi_params;
+   		uwsgi_read_timeout 	1800;
+  		uwsgi_param     	UWSGI_SCHEME $scheme;
+  		uwsgi_param     	SERVER_SOFTWARE    nginx/$nginx_version;
+  		uwsgi_param 		SCRIPT_NAME '';
+  	}
+  }
+

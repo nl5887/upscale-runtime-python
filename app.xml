@@ -1,0 +1,12 @@
+<uwsgi>
+	<plugin>python</plugin>
+	<socket>/run/uwsgi/app/app/socket</socket>
+	<pythonpath>/usr/share/nginx/html/env/bin/</pythonpath>
+	<chdir>/usr/share/nginx/html</chdir>
+	<home>/usr/share/nginx/html/env/</home>
+	<paste>config:/usr/share/nginx/html/production.ini</paste>
+	<env>PYTHON_EGG_CACHE=/usr/share/nginx/html/.python-eggs</env>
+	<uid>www-data</uid>
+	<gid>www-data</gid>
+</uwsgi>
+
