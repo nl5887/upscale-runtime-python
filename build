@@ -20,8 +20,7 @@ pushd .
 cd /usr/share/nginx/html/
 
 if [ -d .upscale/pre-build.d/ ] ; then
-cd .upscale
-for script in `ls pre-build.d/* | sort -V`; do 
+for script in `ls .upscale/pre-build.d/* | sort -V`; do 
 echo Executing $script
 chmod +x ./$script
 ./$script
@@ -43,8 +42,7 @@ pushd .
 cd /usr/share/nginx/html/
 
 if [ -d .upscale/post-build.d/ ] ; then
-cd .upscale
-for script in `ls post-build.d/* | sort -V`; do 
+for script in `ls .upscale/post-build.d/* | sort -V`; do 
 echo Executing $script
 chmod +x ./$script
 ./$script
