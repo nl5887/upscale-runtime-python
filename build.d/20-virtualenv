@@ -1,2 +1,4 @@
+#!/bin/bash
+
 cd /usr/share/nginx/html/
 virtualenv env
