@@ -2,10 +2,4 @@
 
 cd /usr/share/nginx/html/
 
-git init
-git remote add origin $UPSCALE_REPOSITORY_URL 
-git fetch origin
-git checkout -b master
-git reset origin/master --hard
-
 chown -R www-data:www-data /usr/share/nginx/html/
