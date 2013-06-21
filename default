@@ -1,12 +1,11 @@
   server {
   	listen 80;
   	listen [::]:80 default_server ipv6only=on;
-  	root /usr/share/nginx/html;
   	index index.html index.htm;
   	client_max_body_size 2000M;
   
   	location / {
-   		root /usr/share/nginx/html/static; 
+   		root {{ static_root }}; 
    		try_files $uri @uwsgi;
   	}
   

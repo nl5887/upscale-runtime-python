@@ -1,8 +1,6 @@
 #!/bin/bash
-service uwsgi restart
-service nginx restart
 
 # health check
 
 # enable 
-touch /usr/share/nginx/html/health
+touch $UPSCALE_STATIC_ROOT/health

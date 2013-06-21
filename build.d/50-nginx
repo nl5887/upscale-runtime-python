@@ -1,3 +1,11 @@
-#!/bin/bash
-cp default /etc/nginx/sites-available/default
+#!/usr/bin/env python
+import os, sys
 
+static_root = os.environ['UPSCALE_STATIC_ROOT']
+
+from jinja2 import Environment, FileSystemLoader
+env = Environment(loader=FileSystemLoader('.'))
+template = env.get_template('default')
+
+with open('/etc/nginx/sites-available/default', 'wb') as f:
+	f.write(template.render({ 'static_root': static_root, 'env': os.environ}))

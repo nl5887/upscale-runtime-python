@@ -1,8 +1,4 @@
 #!/bin/bash
-service php5-fpm restart
-service apache2 restart
+service uwsgi restart
+service nginx restart
 
-# health check
-
-# enable 
-touch /var/www/health
