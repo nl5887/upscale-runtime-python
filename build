@@ -6,9 +6,50 @@ apt-get install --force-yes -y -qq wget python git nginx uwsgi uwsgi-plugin-pyth
 # add environment variables
 $(./config.py)
 
+# git clone
+cd /usr/share/nginx/html/
+
+git init
+git remote add origin $UPSCALE_REPOSITORY_URL 
+git fetch origin
+git checkout -b master
+git reset origin/master --hard
+
+# run prebuild.d scripts
+pushd .
+cd /usr/share/nginx/html/
+
+if [ -d .upscale/pre-build.d/ ] ; then
+cd .upscale
+for script in `ls .upscale/pre-build.d/* | sort -V`; do 
+echo Executing $script
+chmod +x ./$script
+./$script
+done
+fi
+
+popd
+
+pushd .
 for script in `ls build.d/* | sort -V`; do 
 echo Executing $script
 chmod +x ./$script
 ./$script
 done
+popd
+
+# run postbuild.d scripts
+pushd .
+cd /usr/share/nginx/html/
+
+if [ -d .upscale/post-build.d/ ] ; then
+cd .upscale
+for script in `ls .upscale/post-build.d/* | sort -V`; do 
+echo Executing $script
+chmod +x ./$script
+./$script
+done
+fi
+
+popd
 
